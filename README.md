@@ -18,4 +18,3 @@ $evtOut = $modx->invokeEvent('OnDocDataRender', array(
 if (is_array($evtOut)) echo implode('', $evtOut);
 ?>
 ```
-# TreeAction
