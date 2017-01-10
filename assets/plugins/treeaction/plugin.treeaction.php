@@ -32,24 +32,19 @@ switch ($modx->event->name)
             throw e;
           }
         callback(result, args, this, callNumber);
-        return result;                 
+        return result;
       }
-    };
-    
-    function treeActionCustom(el) {
-      var id = el.getAttribute('data-id');
-      itemToChange = id;
-      menuHandler(1);
     };
 
     function changeNode(id) {
       var node = document.getElementById('node'+id);
       var img = document.getElementById('s'+id);
-      var span = node.querySelector('span');
-      
+      var span = node.querySelector('span.treeNode');
+      var action = span.getAttribute('onclick');
+
       if(img){ img.style.visibility = 'hidden'; }
-      span.setAttribute('onclick', 'treeActionCustom(this); setSelected(this);');
-      span.setAttribute('data-id', id);
+
+      span.setAttribute('onclick', action.replace(/(treeAction\([^\(\)]*)(\);)/, '$1,0);'));
     };
 
     rpcLoadData = addCallListener(rpcLoadData , function(result, args, self, callNumber){
@@ -57,10 +52,9 @@ switch ($modx->event->name)
         changeNode(nodes[i]);
       }
     });
-    
-	  </script>";
+
+    </script>";
     break;
 }
 
 if($output != '') $modx->event->output($output);
-
