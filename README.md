@@ -1,5 +1,7 @@
 # TreeAction
-Plugin for MODX Evolution to change default action in the resource tree
+Plugin for MODX Evolution to change default action in the resource tree.
+
+Hide children Resources for selected Folders in resource tree and open tab with table of child resources after click on Folder.
 
 ## Install
 * Create plugin with code from file *install/assets/plugins/treeaction.tpl*
